@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Perspektiva", "Perspektiva\Perspektiva.csproj", "{8FEFAD95-0A2C-4535-B89C-4BA2D563D1AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FEFAD95-0A2C-4535-B89C-4BA2D563D1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FEFAD95-0A2C-4535-B89C-4BA2D563D1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FEFAD95-0A2C-4535-B89C-4BA2D563D1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FEFAD95-0A2C-4535-B89C-4BA2D563D1AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF4642A3-E9C1-476C-B0F3-928D91D5CF3E}
+	EndGlobalSection
+EndGlobal
