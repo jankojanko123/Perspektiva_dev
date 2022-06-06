@@ -36,7 +36,9 @@ using (var scope = app.Services.CreateScope())
         var context = services.GetRequiredService<ApplicationDbContext>();
         var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
         var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-        await ContextSeed.SeedRolesAsync(userManager, roleManager);
+        await ContextSeed.SeedRolesAsync(userManager, roleManager); 
+        await ContextSeed.SeedSuperAdminAsync(userManager, roleManager); //seeds default user as super admin
+
     }
     catch (Exception ex)
     {
