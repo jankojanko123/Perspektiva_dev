@@ -50,11 +50,17 @@ using (var scope = app.Services.CreateScope())
 /// 
 /// </summary>
 
+ 
+
+
 
 var mvcBuilder = builder.Services.AddRazorPages();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+
+
+
     app.UseMigrationsEndPoint();
     app.UseBrowserLink();
     
@@ -68,13 +74,26 @@ else
 
 
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}");
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 app.MapRazorPages();
+
+
 app.Run();

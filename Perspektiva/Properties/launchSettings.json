@@ -12,8 +12,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        
+        "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:7110;http://localhost:5110",
       "dotnetRunMessages": true
@@ -21,9 +20,9 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "https://localhost:44336/admin/perspective",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-        
       }
     },
     "Docker": {

@@ -17,8 +17,9 @@ namespace Perspektiva.Migrations
                     UserID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Latitude = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Longitude = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TimeStamp = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                    
+                    TimeStamp = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PerspectivePicture = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+
                 },
                 constraints: table =>
                 {
