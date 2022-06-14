@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Perspektiva.Areas.Admin.Models;
+using Perspektiva.Helpers;
+using System.Security.Claims;
 
 namespace Perspektiva.Areas.Admin.Controllers
 {
@@ -20,24 +24,36 @@ namespace Perspektiva.Areas.Admin.Controllers
         }
 
         // GET: PerspectiveController/Create
+        [Authorize(Roles = "SuperAdmin")]
         public ActionResult Create()
-        {/// zakaj negre v tale controller https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/areas?view=aspnetcore-6.0
+        {
             return View();
         }
 
         // POST: PerspectiveController/Create
         [HttpPost]
+        [Authorize(Roles = "SuperAdmin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(PerspectivesViewModel collection)
         {
-            try
-            {
+            byte[] bytes = { 0, 0, 0, 25 }; //TODO: picture upload!
+            //try
+            //{
+            //scollection.PerspectivePicture = [""];
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId
+                collection.UserID = userId;
+                collection.PerspectivePicture = bytes;//temp
+
+                PerspectiveHelper perspectiveHelper = new PerspectiveHelper();
+                perspectiveHelper.CreatePerspective(collection);
+
                 return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            //}
+
+            //catch
+            //{
+            //    return View();
+            //}
         }
 
         // GET: PerspectiveController/Edit/5

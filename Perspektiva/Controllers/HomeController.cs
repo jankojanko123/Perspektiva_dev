@@ -3,6 +3,7 @@ using Perspektiva.Models;
 using System.Diagnostics;
 using Perspektiva.Helpers;
 using System.Security.Claims;
+using Newtonsoft.Json;
 
 namespace Perspektiva.Controllers
 {
@@ -33,7 +34,7 @@ namespace Perspektiva.Controllers
             //chack if guesspost
 
             GuessHelper guessHelper = new GuessHelper();
-            UserGuess guess = Newtonsoft.Json.JsonConvert.DeserializeObject<UserGuess>(guesspost);
+            UserGuess guess =JsonConvert.DeserializeObject<UserGuess>(guesspost);
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId
             guess.UserID = userId;
