@@ -62,7 +62,7 @@ namespace Perspektiva.Controllers
 
             //TODO: vrni relevantno perspektivo - datumsko odklenjena...
             List<PerspectivaDataModel> perspektivaList = guessHelper.GetPerspective(0);
-            PerspectivaDataModel perspektiva = perspektivaList.FirstOrDefault();
+            //PerspectivaDataModel perspektiva = perspektivaList.FirstOrDefault();
 
             //TODO: porpavi modele na double
 

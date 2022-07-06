@@ -1,4 +1,6 @@
-﻿namespace Perspektiva.Areas.Admin.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Perspektiva.Areas.Admin.Models
 {
     public class PerspectivesViewModel
     {
@@ -8,6 +10,6 @@
         public string Description { get; set; }
         public string Title { get; set; }
         public int Difficulty { get; set; }
-        public byte[]? PerspectivePicture { get; set; }
+        public IFormFile PerspectivePicture { set; get; }
     }
 }

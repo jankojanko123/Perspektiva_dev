@@ -1,7 +1,11 @@
-﻿namespace Perspektiva.Areas.Admin.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Perspektiva.Areas.Admin.Models   
 {
     public class PerspectivaDataModel
     {
+        [Key]
         public int ID { get; set; }
         public string? UserID { get; set; }
         public string Latitude { get; set; }

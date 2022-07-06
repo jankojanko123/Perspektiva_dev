@@ -13,7 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Views\Home\Index.cshtml.old" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Scripts\js\app.min.js" />
+    <Content Include="Views\Home\Index.cshtml.old" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +40,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>

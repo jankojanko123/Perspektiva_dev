@@ -12,7 +12,7 @@ namespace Perspektiva.Helpers
     {
         private SqlConnection con;
 
-        public void CreatePerspective(PerspectivesViewModel perspective)
+        public void CreatePerspective(PerspectivaDataModel perspective)
         {
             if (perspective == null)
                 return;

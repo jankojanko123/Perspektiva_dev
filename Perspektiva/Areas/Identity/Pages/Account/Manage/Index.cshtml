@@ -50,15 +50,16 @@
                            asp-for="Input.ProfilePicture"
                            class="form-control"
                            style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                           name="ProfilePicture"
                            onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
                     <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
                 </div>
             </div>
-           
+
         </form>
     </div>
 </div>
 
 @section Scripts {
-<partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
 }
