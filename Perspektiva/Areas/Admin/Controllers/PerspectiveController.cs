@@ -14,7 +14,13 @@ namespace Perspektiva.Areas.Admin.Controllers
 
     public ActionResult Index()
     {
-      return View();
+
+
+      PerspectiveHelper perspectiveHelper = new PerspectiveHelper();
+      List<PerspectivaDataModel> perspectivesList =  perspectiveHelper.GetPerspective();
+      /*pridobi listo perspektiv - vseh*/
+
+      return View(perspectivesList);
     }
 
     // GET: PerspectiveController/Details/5

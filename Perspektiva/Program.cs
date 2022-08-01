@@ -11,7 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 
 // Add services to the container.
- connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -21,8 +21,18 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 builder.Services.AddControllersWithViews();
 
+
+/*CoreAdmin*/
+builder.Services.AddCoreAdmin("Admin");
+builder.Services.AddCoreAdmin("SuperAdmin");
+/**/
 var app = builder.Build();
 
+/*Settings for coreadmin*/
+//app.UseCoreAdminCustomUrl("adminpanel");
+app.UseCoreAdminCustomTitle("Perspectiva SysAdmin controll pannes");
+
+/**/
 /// <summary>
 /// enums - checks if enums in table- if not it seeds them.
 /// </summary>

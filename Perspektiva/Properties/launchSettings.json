@@ -21,7 +21,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "https://localhost:44336/admin/perspective/create",
+      "launchUrl": "https://localhost:44336/admin/perspective",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
