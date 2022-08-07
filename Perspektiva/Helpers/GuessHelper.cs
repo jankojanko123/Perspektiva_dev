@@ -74,7 +74,7 @@ namespace Perspektiva.Helpers
                                 Description = sdr["Description"].ToString(),
                                 Title = sdr["Title"].ToString(),
                                 Difficulty = Convert.ToInt32(sdr["Difficulty"]),
-                                PerspectivePicture = null
+                                PerspectivePictureByte = null
                             });
                         }
                     }

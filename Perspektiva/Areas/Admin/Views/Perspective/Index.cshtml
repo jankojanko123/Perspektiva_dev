@@ -32,7 +32,7 @@
 
                 <div class="col">
                     <div class="card">
-                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.PerspectivePicture)" class="card-img-top" alt="ALT"  />
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.PerspectivePictureByte)" class="card-img-top" alt="ALT"  />
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
 
@@ -56,7 +56,7 @@
                                 Info<i class="fas fa-envelope ms-2"></i>
                             </a>
                             <a class="btn btn-link m-0 text-reset"
-                           href="#"
+                           href= @Url.Action(action: "Edit", controller: "Perspective",  new { id = item.ID })
                            role="button"
                            data-ripple-color="primary">
                                 Edit<i class="fas fa-phone ms-2"></i>

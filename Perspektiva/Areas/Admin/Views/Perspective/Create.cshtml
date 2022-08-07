@@ -71,16 +71,22 @@
                                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                             </div>
                             <div class="custom-file">
-                                @Html.TextBoxFor(m => m.PerspectivePicture, new { type = "file" })
+                                @Html.TextBoxFor(m => m.PerspectivePictureFile, new { type = "file" })
                                 <input class="custom-file-input" id="inputGroupFile01"
-                                   aria-describedby="inputGroupFileAddon01" name="PerspectivePicture" type="file">
-                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                   aria-describedby="inputGroupFileAddon01" name="PerspectivePictureFile" type="file">
+
+                           
                             </div>
                         </div>
                         @*<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>*@
                     </div>
+                               <div class="d-grid gap-2 d-md-block">
+                        
+                        <button type="submit" class="btn btn-primary">Create</button>
+                     
+                        <button class="btn btn-secondary" type ="button" onclick="location.href='@Url.Action("Index","Perspective")'"> Back</button>
+                    </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
                 }
             </div>
         </div>
