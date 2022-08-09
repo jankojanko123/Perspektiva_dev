@@ -9,7 +9,7 @@ using System.Security.Claims;
 namespace Perspektiva.Areas.Admin.Controllers
 {
   [Area("Admin")]
-  public class PerspectiveController : Controller
+  public class AdminPerspectiveController : Controller
   {
     // GET: PerspectiveController
 

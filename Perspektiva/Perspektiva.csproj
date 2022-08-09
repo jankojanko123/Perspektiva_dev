@@ -13,12 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Views\Home\Index.cshtml.old" />
+    <None Remove="Views\Home\Index.cshtml.oldtest" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Scripts\js\app.min.js" />
-    <Content Include="Views\Home\Index.cshtml.old" />
+    <Content Include="Views\Home\Index.cshtml.oldtest" />
   </ItemGroup>
 
   <ItemGroup>

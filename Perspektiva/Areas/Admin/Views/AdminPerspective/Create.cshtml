@@ -29,7 +29,7 @@
         <hr />
         <div class="row">
             <div class="col-lg-12">
-                @using (Html.BeginForm("Create", "Perspective", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("Create", "AdminPerspective", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
 
                     <div class="form-group">
@@ -84,7 +84,7 @@
                         
                         <button type="submit" class="btn btn-primary">Create</button>
                      
-                        <button class="btn btn-secondary" type ="button" onclick="location.href='@Url.Action("Index","Perspective")'"> Back</button>
+                        <button class="btn btn-secondary" type ="button" onclick="location.href='@Url.Action("Index","AdminPerspective")'"> Back</button>
                     </div>
 
                 }

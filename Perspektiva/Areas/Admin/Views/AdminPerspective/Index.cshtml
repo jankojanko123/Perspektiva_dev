@@ -24,7 +24,7 @@
 
 
 <div class="d-grid gap-2 d-md-block">
-    <button class="btn btn-secondary" type="button" onclick="location.href='@Url.Action("Create","Perspective")'"> Create</button>
+    <button class="btn btn-secondary" type="button" onclick="location.href='@Url.Action("Create","AdminPerspective")'"> Create</button>
     <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("Index","Home", new { Area = "" })'"> Back</button>
 </div>
 <body>
@@ -64,7 +64,7 @@
                                 Info<i class="fas fa-envelope ms-2"></i>
                             </a>
                             <a class="btn btn-link m-0 text-reset"
-                           href=@Url.Action(action: "Edit", controller: "Perspective", new { id = item.ID })
+                           href=@Url.Action(action: "Edit", controller: "AdminPerspective", new { id = item.ID })
                            role="button"
                            data-ripple-color="primary">
                                 Edit<i class="fas fa-phone ms-2"></i>
