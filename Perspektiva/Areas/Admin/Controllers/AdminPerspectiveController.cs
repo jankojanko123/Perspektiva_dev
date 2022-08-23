@@ -13,6 +13,8 @@ namespace Perspektiva.Areas.Admin.Controllers
   {
     // GET: PerspectiveController
 
+    
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public ActionResult Index()
     {
 
@@ -23,7 +25,7 @@ namespace Perspektiva.Areas.Admin.Controllers
 
       return View(perspectivesList);
     }
-
+    [Authorize(Roles = "Admin, SuperAdmin")]
     // GET: PerspectiveController/Details/5
     public ActionResult Details(int id)
     {
@@ -31,7 +33,7 @@ namespace Perspektiva.Areas.Admin.Controllers
     }
 
     // GET: PerspectiveController/Create
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public ActionResult Create()
     {
       return View();
@@ -39,11 +41,8 @@ namespace Perspektiva.Areas.Admin.Controllers
 
     // POST: PerspectiveController/Create
     [HttpPost]
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "Admin, SuperAdmin")]
     [ValidateAntiForgeryToken]
-    //public ActionResult Create(PerspectivaDataModel collection)
-
-
     public async Task<IActionResult> Create(PerspectivesViewModel collection)
     {
       IFormFile picFIle = collection.PerspectivePictureFile;
@@ -91,6 +90,7 @@ namespace Perspektiva.Areas.Admin.Controllers
     }
 
     // GET: PerspectiveController/Edit/5
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public ActionResult Edit(int id)
     {
       PerspectiveHelper perspectiveHelper = new PerspectiveHelper();
@@ -120,6 +120,7 @@ namespace Perspektiva.Areas.Admin.Controllers
     // POST: PerspectiveController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public ActionResult Edit( PerspectivesViewModel collection, int id)
     {
       /* TODO: picture edit*/
@@ -197,6 +198,7 @@ namespace Perspektiva.Areas.Admin.Controllers
     }
 
     // GET: PerspectiveController/Delete/5
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public ActionResult Delete(int id)
     {
       return View();
@@ -205,6 +207,7 @@ namespace Perspektiva.Areas.Admin.Controllers
     // POST: PerspectiveController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public ActionResult Delete(int id, IFormCollection collection)
     {
       try

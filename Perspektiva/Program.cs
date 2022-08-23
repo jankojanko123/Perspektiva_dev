@@ -22,6 +22,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 builder.Services.AddControllersWithViews();
 
+/*TODO: can throw out*/
 builder.Services.Configure<FormOptions>(Option =>
 {
   Option.MultipartBodyLengthLimit = 200000000;
@@ -29,6 +30,7 @@ builder.Services.Configure<FormOptions>(Option =>
 
 
 /*CoreAdmin*/
+/*you can only enter core admin with these roles*/
 builder.Services.AddCoreAdmin("Admin");
 builder.Services.AddCoreAdmin("SuperAdmin");
 /**/

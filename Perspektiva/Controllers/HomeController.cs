@@ -6,6 +6,8 @@ using System.Security.Claims;
 using Newtonsoft.Json;
 using Perspektiva.Areas.Admin.Models;
 using GeoCoordinatePortable;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Perspektiva.Controllers
 {
   public class Student
@@ -28,6 +30,7 @@ namespace Perspektiva.Controllers
       return View();
     }
 
+    [Authorize(Roles = "Basic, Admin, SuperAdmin")]
     public IActionResult MyPerspectives()
     {
 

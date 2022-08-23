@@ -1,12 +1,43 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Perspektiva</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Perspektiva.styles.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/map.css">
+
+    <link rel="stylesheet" href="~/Perspektiva.styles.css" />
+    <link rel="stylesheet" href="~/css/rainbow_button.css">
+    <link rel="stylesheet" href="~/css/MyPerspectives.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+    <link rel="stylesheet" href="~/css/mdb.min.css">
+    <link rel="stylesheet" href="~/css/mdb.min.css.map">
+
+    <style>
+        .adminHref {
+            font-weight: bold;
+        }
+    </style>
 
 </head>
 <body>
@@ -23,14 +54,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MyPerspectives">My Perspectives</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminPerspective" asp-action="Index">Perspectives admin</a>
+
+                        @*@if ([Authorize(Roles = "SuperAdmin")])
+                        {*@
+
+
+                        @*}*@
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item adminHref">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminPerspective" asp-action="Index">Perspectives Admin Dashboard</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -38,16 +71,16 @@
             </div>
         </nav>
     </header>
-    <div class="container-page">
-        <main role="main" class="pb-3">
+    <div class="container-page pb-lg-5">
+        <main role="main" class="pb-lg-5">
             @RenderBody()
         </main>
     </div>
 
-@*    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Perspektiva - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    @*    <footer class="border-top footer text-muted">
+    <div class="container">
+    &copy; 2022 - Perspektiva - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
     </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

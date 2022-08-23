@@ -118,6 +118,8 @@ namespace Perspektiva.Controllers
 
       guessHelper.SaveGuess(ReviecedUserGuess);
 
+
+      //TODO: calculate points and save into RecievedUserGuess 
       int points = PonintifyGuess(ReviecedUserGuess);
 
       return Json(new { success = true, responseText = "yee" });
