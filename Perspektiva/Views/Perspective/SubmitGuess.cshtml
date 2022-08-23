@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="~/css/mdb.min.css.map">
     <link rel="stylesheet" href="~/css/rainbow_button.css">
     <link rel="stylesheet" href="~/css/MyPerspectives.css">
+    <link rel="stylesheet" href="~/css/imageUpload.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
@@ -52,7 +53,7 @@
             zoom: 8,
             disableDefaultUI: true,
             //mapTypeId: 'terrain' //TODO: style terrain map
-            mapId: "989e6e56568e2cc6"
+            //mapId: "989e6e56568e2cc6"
         });
         map.setTilt(45);
 
@@ -155,7 +156,7 @@
         }
     }
 
-    function SendLocales() {
+    function SendLatLon() {
         var guessjson = "";
         try {
             guessjson = JSON.stringify(CollectUserGuess());
@@ -185,8 +186,9 @@
 
 
 
-
 </script>
+
+
 
 <div class="d-grid gap-2 d-md-block">
     <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("Index","Home", new { Area = "" })'"> Back</button>
@@ -207,30 +209,50 @@
         </div>
 
         <div class="container-map">
-
-
-
             <div class="card mb-3">
 
                 <div class="card-map">
                     <div class="">
                         <div>
-                            <div id="map-js" style="width:100%;height:1000px; "></div>
+                            <div id="map-js" style="width:100%;height:600px; "></div>
                         </div>
                     </div>
+
+
                     <div class="card-body">
 
+                        <div class="file-upload">
+                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
 
-                        <input type="submit" value="Btn" class="btn btn-primary" id="btnSubmitGuess" />
+                            <div class="image-upload-wrap">
+                                <input id="imageUploadForm" class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                                <div class="drag-text">
+                                    <h3>Drag and drop a file or select add Image</h3>
+                                </div>
+                            </div>
+                            <div class="file-upload-content">
+                                <img class="file-upload-image" src="#" alt="your image" />
+                                <div class="image-title-wrap">
+                                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
-                </div>
 
+                    <input type="submit" value="Btn" class="btn btn-primary" id="btnSubmitGuess" onclick="prepareForSending();" />
+                </div>
 
             </div>
 
 
-
         </div>
+
+       
+        @Html.HiddenFor(x => x.ID, new { id = "PerspectiveID" })
+
+    </div>
     </div>
 
 
@@ -239,29 +261,120 @@
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
     }
-        <script>
-            $('.js-tilt').tilt({
-                scale: 1.00,
-                perspective: 500
-            })
+
+        <script id="onloadjs" type="text/javascript">
+
+            //$(document).ready(function() {
+
+            //    var btn = document.getElementById("btnSubmitGuess");
+
+            //    btn.addEventListener("click", function() {
+            //        SendDocs();
+
+            //        //SendLatLon();
+            //    }, false);
+
+            //});
 
 
         </script>
 
-        <script id="onloadjs" type="text/javascript">
+        <script>
 
-    $(document).ready(function () {
+            function prepareForSending() {
 
-        var btn = document.getElementById("btnSubmitGuess");
-
-        btn.addEventListener("click", function () {
-            SendLocales();
-        }, false);
-
-    });
+                var formData = new FormData();
+                var totalFiles = document.getElementById("imageUploadForm").files.length;
 
 
-</script>
+                for (var i = 0; i < totalFiles; i++) {
+                    var file = document.getElementById("imageUploadForm").files[i];
+                    formData.append("UserGuess_Picture", file);
+                }
+
+                const LatLon = JSON.stringify(CollectUserGuess());
+
+
+                var PerspectiveID = $('#PerspectiveID').val();
+
+                formData.append(LatLon, Text);
+
+                formData.append(PerspectiveID, Text);
+
+                sendDocs(formData)
+
+            }
+
+            function sendDocs(formData) {
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetGuessedData", "Perspective")',
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        if (response.success) {
+                            alert(response.responseText);
+                        } else {
+                            // DoSomethingElse()
+                            alert(response.responseText);
+                        }
+                    },
+                    error: function(response) {
+                        console.log(response);
+                        alert("error!");  //
+                    }
+
+                });
+            }
+                        
+
+
+            //////////////////////////
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('.image-upload-wrap').hide();
+
+                        $('.file-upload-image').attr('src', e.target.result);
+                        $('.file-upload-content').show();
+
+                        $('.image-title').html(input.files[0].name);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+
+                } else {
+                    removeUpload();
+                }
+            }
+
+            function removeUpload() {
+                $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+                $('.file-upload-content').hide();
+                $('.image-upload-wrap').show();
+            }
+            $('.image-upload-wrap').bind('dragover', function() {
+                $('.image-upload-wrap').addClass('image-dropping');
+            });
+            $('.image-upload-wrap').bind('dragleave', function() {
+                $('.image-upload-wrap').removeClass('image-dropping');
+            });
+
+
+            $('.js-tilt').tilt({
+                scale: 1.00,
+                perspective: 500
+            })
+        </script>
+
+
 
 
     </body>

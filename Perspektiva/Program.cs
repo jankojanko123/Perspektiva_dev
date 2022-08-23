@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Perspektiva.Data;
@@ -20,6 +21,11 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.Configure<FormOptions>(Option =>
+{
+  Option.MultipartBodyLengthLimit = 200000000;
+});
 
 
 /*CoreAdmin*/
@@ -60,7 +66,6 @@ using (var scope = app.Services.CreateScope())
 /// 
 /// </summary>
 
- 
 
 
 
